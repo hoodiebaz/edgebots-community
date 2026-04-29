@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EdgeBots Community — Free MT5 Bots</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --black:#080a0d; --dark:#0e1117; --card:#13171f; --border:#1e2330;
+  --accent:#3b82f6; --accent2:#60a5fa; --blue:#3b82f6;
+  --text:#dde2ee; --muted:#6b7589; --white:#ffffff;
+  --discord:#5865f2; --discord-hover:#4752c4;
+  --green:#4ade80;
+}
+html { scroll-behavior: smooth; overflow-x: hidden; }
+body { background:var(--black); color:var(--text); font-family:'Inter',sans-serif; font-size:15px; line-height:1.65; overflow-x:hidden; min-height:100vh; }
+body::before { content:''; position:fixed; inset:0; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E"); pointer-events:none; z-index:0; opacity:0.4; }
+.container { max-width:680px; margin:0 auto; padding:0 24px; position:relative; z-index:1; }
+
+nav { position:sticky; top:0; z-index:100; background:rgba(8,10,13,0.85); backdrop-filter:blur(16px); border-bottom:1px solid var(--border); padding:16px 24px; }
+.nav-inner { max-width:680px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; }
+.logo { font-weight:800; font-size:18px; color:var(--white); letter-spacing:-0.5px; }
+.logo span { color:var(--accent); }
+.nav-tag { font-size:11px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; color:var(--muted); }
+
+/* HERO */
+.hero { padding:64px 0 48px; text-align:center; }
+.free-badge { display:inline-flex; align-items:center; gap:7px; background:rgba(74,222,128,0.1); border:1px solid rgba(74,222,128,0.3); color:var(--green); font-size:11px; font-weight:600; letter-spacing:1.8px; text-transform:uppercase; padding:6px 14px; border-radius:4px; margin-bottom:28px; }
+.free-badge::before { content:''; width:6px; height:6px; background:var(--green); border-radius:50%; animation:pulse 2s infinite; }
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.4;transform:scale(0.8)} }
+h1 { font-weight:800; font-size:48px; line-height:1.06; letter-spacing:-2px; color:var(--white); margin-bottom:20px; }
+h1 em { font-style:normal; background:linear-gradient(90deg,var(--accent2) 0%,#93c5fd 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+.hero-sub { font-size:17px; color:var(--muted); max-width:480px; margin:0 auto 40px; font-weight:300; line-height:1.6; }
+.hero-sub strong { color:var(--text); font-weight:500; }
+
+/* HERO IMAGE */
+.hero-img-wrap { width:100%; aspect-ratio:16/9; border-radius:12px; overflow:hidden; border:1px solid var(--border); background:var(--dark); box-shadow:0 20px 60px rgba(0,0,0,0.4); margin-bottom:56px; }
+.hero-img-wrap img { width:100%; height:100%; object-fit:cover; display:block; }
+
+/* WHAT YOU GET */
+.section-label { font-size:10px; font-weight:600; letter-spacing:3px; text-transform:uppercase; color:var(--accent); margin-bottom:14px; text-align:center; }
+h2 { font-weight:800; font-size:28px; letter-spacing:-0.8px; color:var(--white); margin-bottom:10px; line-height:1.2; text-align:center; }
+.section-intro { font-size:15px; color:var(--muted); margin-bottom:32px; text-align:center; }
+
+.perks-list { display:flex; flex-direction:column; gap:12px; margin-bottom:48px; }
+.perk { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:20px 22px; display:flex; gap:16px; align-items:flex-start; }
+.perk-icon { font-size:22px; flex-shrink:0; margin-top:2px; }
+.perk-title { font-size:14px; font-weight:700; color:var(--white); margin-bottom:4px; letter-spacing:-0.2px; }
+.perk-desc { font-size:13px; color:var(--muted); line-height:1.5; }
+
+/* CTA */
+.cta-wrap { text-align:center; }
+.discord-btn { display:inline-flex; align-items:center; justify-content:center; gap:10px; background:var(--discord); color:#fff; font-size:16px; font-weight:700; padding:18px 40px; border-radius:10px; text-decoration:none; letter-spacing:0.1px; transition:all 0.2s; width:100%; max-width:400px; }
+.discord-btn:hover { background:var(--discord-hover); transform:translateY(-2px); box-shadow:0 12px 32px rgba(88,101,242,0.35); }
+.discord-btn svg { width:22px; height:22px; flex-shrink:0; }
+.cta-note { font-size:12px; color:var(--muted); margin-top:14px; }
+
+/* DIVIDER */
+.divider { border:none; border-top:1px solid var(--border); margin:56px 0; }
+
+/* FOOTER */
+.footer { text-align:center; padding:32px 0 48px; }
+.footer-text { font-size:13px; color:var(--muted); margin-bottom:12px; }
+.footer-link { color:var(--accent); text-decoration:none; font-weight:500; }
+.footer-link:hover { color:var(--accent2); }
+.footer-logo { font-weight:800; font-size:15px; color:var(--muted); letter-spacing:-0.3px; margin-bottom:8px; }
+.footer-logo span { color:var(--accent); }
+
+@media (max-width:600px) {
+  h1 { font-size:34px; letter-spacing:-1.5px; }
+  h2 { font-size:22px; }
+  .hero { padding:48px 0 36px; }
+  .discord-btn { font-size:15px; padding:16px 28px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <div class="logo">Edge<span>Bots</span></div>
+    <div class="nav-tag">Free Community</div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="free-badge">100% Free</div>
+    <h1>Get the bot.<br><em>No cost.</em></h1>
+    <p class="hero-sub">Join the EdgeBots Discord and grab a <strong>ready-to-run MT5 bot</strong> from the free library — download it today and run it on your own account.</p>
+
+    <div class="hero-img-wrap">
+      <img src="https://edgebots.com.au/hero-mt5.png" alt="EdgeBots MT5 bot running live">
+    </div>
+
+    <div class="section-label">What's Inside</div>
+    <h2>Everything in the<br>community is free.</h2>
+    <p class="section-intro">No upsell to get in. No paywall on the bots.</p>
+
+    <div class="perks-list">
+      <div class="perk">
+        <div class="perk-icon">🤖</div>
+        <div>
+          <div class="perk-title">Free Bot Library</div>
+          <div class="perk-desc">A growing collection of ready-to-run MT5 bots — download, attach to your chart, and go. Updated as new strategies get added.</div>
+        </div>
+      </div>
+      <div class="perk">
+        <div class="perk-icon">🎓</div>
+        <div>
+          <div class="perk-title">Build-Your-Own Education Series</div>
+          <div class="perk-desc">Step-by-step tutorials on building your own MT5 bots in MQL5. From first script to fully automated strategy — no prior coding experience needed.</div>
+        </div>
+      </div>
+      <div class="perk">
+        <div class="perk-icon">💬</div>
+        <div>
+          <div class="perk-title">A Community of Traders Automating</div>
+          <div class="perk-desc">Connect with other traders going systematic. Share results, ask questions, and get feedback from people actually running bots live.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cta-wrap">
+      <a class="discord-btn" href="https://discord.gg/GZrmPedThx" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.030z"/></svg>
+        Join the Discord — it's free
+      </a>
+      <div class="cta-note">Free forever · No credit card · Just join</div>
+    </div>
+  </div>
+</section>
+
+<div class="container"><hr class="divider"></div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-logo">Edge<span>Bots</span></div>
+    <div class="footer-text">Want a bot built to your exact strategy? <a href="https://edgebots.com.au" class="footer-link">See the custom build service →</a></div>
+  </div>
+</footer>
+
+</body>
+</html>
