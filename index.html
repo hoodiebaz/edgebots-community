@@ -3,77 +3,135 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>EdgeBots Community — Free MT5 Bots</title>
+<title>EdgeBots — Free Discord for Traders Getting Into Automation</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 :root {
   --black:#080a0d; --dark:#0e1117; --card:#13171f; --border:#1e2330;
-  --accent:#3b82f6; --accent2:#60a5fa; --blue:#3b82f6;
-  --text:#dde2ee; --muted:#6b7589; --white:#ffffff;
-  --discord:#5865f2; --discord-hover:#4752c4;
-  --green:#4ade80;
+  --accent:#3b82f6; --accent2:#60a5fa; --red:#ff4d5a;
+  --text:#dde2ee; --muted:#6b7589; --gold:#f0c040; --white:#ffffff;
 }
 html { scroll-behavior: smooth; overflow-x: hidden; }
-body { background:var(--black); color:var(--text); font-family:'Inter',sans-serif; font-size:15px; line-height:1.65; overflow-x:hidden; min-height:100vh; }
+body { background:var(--black); color:var(--text); font-family:'Inter',sans-serif; font-size:15px; line-height:1.65; overflow-x:hidden; }
 body::before { content:''; position:fixed; inset:0; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E"); pointer-events:none; z-index:0; opacity:0.4; }
-.container { max-width:680px; margin:0 auto; padding:0 24px; position:relative; z-index:1; }
+.container { max-width:840px; margin:0 auto; padding:0 28px; position:relative; z-index:1; }
+section { padding:72px 0; }
+section + section { border-top:1px solid var(--border); }
 
-nav { position:sticky; top:0; z-index:100; background:rgba(8,10,13,0.85); backdrop-filter:blur(16px); border-bottom:1px solid var(--border); padding:16px 24px; }
-.nav-inner { max-width:680px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; }
-.logo { font-weight:800; font-size:18px; color:var(--white); letter-spacing:-0.5px; }
+/* NAV */
+nav { position:sticky; top:0; z-index:100; background:rgba(8,10,13,0.85); backdrop-filter:blur(16px); border-bottom:1px solid var(--border); padding:16px 28px; }
+.nav-inner { max-width:840px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; }
+.logo { font-weight:800; font-size:18px; color:var(--white); letter-spacing:-0.5px; text-decoration:none; }
 .logo span { color:var(--accent); }
-.nav-tag { font-size:11px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; color:var(--muted); }
+.nav-cta { background:var(--accent); color:#fff; font-size:12px; font-weight:700; padding:8px 18px; border-radius:6px; text-decoration:none; letter-spacing:0.3px; transition:opacity 0.2s; display:inline-flex; align-items:center; gap:6px; }
+.nav-cta:hover { opacity:0.85; }
 
 /* HERO */
-.hero { padding:64px 0 48px; text-align:center; }
-.free-badge { display:inline-flex; align-items:center; gap:7px; background:rgba(74,222,128,0.1); border:1px solid rgba(74,222,128,0.3); color:var(--green); font-size:11px; font-weight:600; letter-spacing:1.8px; text-transform:uppercase; padding:6px 14px; border-radius:4px; margin-bottom:28px; }
-.free-badge::before { content:''; width:6px; height:6px; background:var(--green); border-radius:50%; animation:pulse 2s infinite; }
+.hero { padding:100px 0 80px; position:relative; border-top:none; overflow:hidden; }
+.hero::after { content:''; position:absolute; top:-100px; left:50%; transform:translateX(-50%); width:600px; height:400px; background:radial-gradient(ellipse at center, rgba(59,130,246,0.08) 0%, transparent 70%); pointer-events:none; z-index:0; }
+.badge { display:inline-flex; align-items:center; gap:7px; background:rgba(59,130,246,0.1); border:1px solid rgba(59,130,246,0.35); color:var(--accent); font-size:11px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; padding:6px 14px; border-radius:4px; margin-bottom:28px; position:relative; z-index:1; }
+.badge::before { content:''; width:6px; height:6px; background:var(--accent); border-radius:50%; animation:pulse 2s infinite; }
 @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.4;transform:scale(0.8)} }
-h1 { font-weight:800; font-size:48px; line-height:1.06; letter-spacing:-2px; color:var(--white); margin-bottom:20px; }
+h1 { font-weight:800; font-size:56px; line-height:1.04; letter-spacing:-2px; color:var(--white); margin-bottom:24px; position:relative; z-index:1; }
 h1 em { font-style:normal; background:linear-gradient(90deg,var(--accent2) 0%,#93c5fd 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
-.hero-sub { font-size:17px; color:var(--muted); max-width:480px; margin:0 auto 40px; font-weight:300; line-height:1.6; }
+.hero-sub { font-size:18px; color:var(--muted); max-width:540px; margin-bottom:36px; position:relative; z-index:1; font-weight:300; line-height:1.6; }
 .hero-sub strong { color:var(--text); font-weight:500; }
-
-/* HERO IMAGE */
-.hero-img-wrap { width:100%; aspect-ratio:16/9; border-radius:12px; overflow:hidden; border:1px solid var(--border); background:var(--dark); box-shadow:0 20px 60px rgba(0,0,0,0.4); margin-bottom:56px; }
+.hero-actions { display:flex; align-items:center; gap:20px; position:relative; z-index:1; flex-wrap:wrap; margin-bottom:48px; }
+.btn-primary { background:linear-gradient(135deg,var(--accent),#2563eb); color:#fff; font-size:15px; font-weight:700; padding:16px 32px; border-radius:8px; text-decoration:none; transition:all 0.2s; display:inline-flex; align-items:center; gap:10px; letter-spacing:-0.2px; }
+.btn-primary:hover { transform:translateY(-2px); box-shadow:0 12px 32px rgba(59,130,246,0.35); }
+.hero-free { font-size:12.5px; color:var(--muted); }
+.hero-free strong { color:var(--accent); font-weight:600; }
+.hero-img-wrap { width:100%; aspect-ratio:16/9; border-radius:12px; overflow:hidden; border:1px solid var(--border); background:var(--dark); position:relative; z-index:1; box-shadow:0 20px 60px rgba(0,0,0,0.4); }
 .hero-img-wrap img { width:100%; height:100%; object-fit:cover; display:block; }
 
-/* WHAT YOU GET */
-.section-label { font-size:10px; font-weight:600; letter-spacing:3px; text-transform:uppercase; color:var(--accent); margin-bottom:14px; text-align:center; }
-h2 { font-weight:800; font-size:28px; letter-spacing:-0.8px; color:var(--white); margin-bottom:10px; line-height:1.2; text-align:center; }
-.section-intro { font-size:15px; color:var(--muted); margin-bottom:32px; text-align:center; }
+/* SECTION HEADERS */
+.section-label { font-size:10px; font-weight:600; letter-spacing:3px; text-transform:uppercase; color:var(--accent); margin-bottom:16px; }
+h2 { font-weight:800; font-size:30px; letter-spacing:-0.8px; color:var(--white); margin-bottom:10px; line-height:1.15; }
+.section-intro { font-size:15px; color:var(--muted); margin-bottom:36px; max-width:480px; }
 
-.perks-list { display:flex; flex-direction:column; gap:12px; margin-bottom:48px; }
-.perk { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:20px 22px; display:flex; gap:16px; align-items:flex-start; }
-.perk-icon { font-size:22px; flex-shrink:0; margin-top:2px; }
-.perk-title { font-size:14px; font-weight:700; color:var(--white); margin-bottom:4px; letter-spacing:-0.2px; }
-.perk-desc { font-size:13px; color:var(--muted); line-height:1.5; }
+/* PILLARS */
+.pillars { display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px; }
+.pillar { background:var(--card); border:1px solid var(--border); border-radius:14px; padding:28px 24px; position:relative; overflow:hidden; }
+.pillar::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg,var(--accent),#2563eb); }
+.pillar-icon { font-size:28px; margin-bottom:16px; display:block; }
+.pillar-title { font-size:15px; font-weight:700; color:var(--white); margin-bottom:8px; letter-spacing:-0.3px; }
+.pillar-desc { font-size:13px; color:var(--muted); line-height:1.6; }
+
+/* FEATURES LIST */
+.features { display:flex; flex-direction:column; gap:0; }
+.feature-row { display:flex; gap:20px; align-items:flex-start; padding:22px 0; border-bottom:1px solid var(--border); }
+.feature-row:last-child { border-bottom:none; }
+.feature-icon { width:40px; height:40px; border-radius:10px; background:rgba(59,130,246,0.1); border:1px solid rgba(59,130,246,0.2); display:flex; align-items:center; justify-content:center; font-size:18px; flex-shrink:0; }
+.feature-body { flex:1; padding-top:4px; }
+.feature-title { font-size:14px; font-weight:600; color:var(--white); margin-bottom:4px; }
+.feature-desc { font-size:13px; color:var(--muted); line-height:1.5; }
+.feature-tag { display:inline-block; background:rgba(240,192,64,0.1); border:1px solid rgba(240,192,64,0.25); color:var(--gold); font-size:10px; font-weight:600; letter-spacing:1px; text-transform:uppercase; padding:3px 9px; border-radius:3px; margin-top:8px; }
+
+/* WHO IT'S FOR GRID */
+.for-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+.for-card { background:var(--card); border:1px solid var(--border); border-radius:10px; padding:18px 20px; display:flex; gap:12px; align-items:flex-start; }
+.for-icon { font-size:18px; flex-shrink:0; margin-top:2px; }
+.for-title { font-size:13px; font-weight:600; color:var(--white); margin-bottom:3px; }
+.for-desc { font-size:12px; color:var(--muted); line-height:1.45; }
+
+/* ABOUT */
+.about-card { background:var(--card); border:1px solid var(--border); border-radius:14px; padding:32px 30px; display:flex; gap:28px; align-items:flex-start; }
+.about-avatar { width:72px; height:72px; border-radius:50%; background:linear-gradient(135deg,var(--accent),#60a5fa); display:flex; align-items:center; justify-content:center; font-size:28px; flex-shrink:0; border:2px solid rgba(59,130,246,0.3); overflow:hidden; }
+.about-avatar img { width:100%; height:100%; object-fit:cover; border-radius:50%; }
+.about-body { flex:1; }
+.about-name { font-size:18px; font-weight:800; color:var(--white); letter-spacing:-0.4px; margin-bottom:2px; }
+.about-role { font-size:12px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; color:var(--accent); margin-bottom:14px; }
+.about-text { font-size:13.5px; color:var(--muted); line-height:1.65; margin-bottom:16px; }
+.about-text strong { color:var(--text); font-weight:500; }
+.about-stats { display:flex; gap:24px; flex-wrap:wrap; padding-top:14px; border-top:1px solid var(--border); }
+.about-stat-num { font-size:20px; font-weight:800; color:var(--white); letter-spacing:-0.5px; line-height:1; margin-bottom:2px; }
+.about-stat-label { font-size:11px; color:var(--muted); }
+.workspace-wrap { width:100%; aspect-ratio:4/3; border-radius:10px; overflow:hidden; border:1px solid var(--border); background:var(--dark); margin-top:16px; margin-bottom:4px; }
+.workspace-wrap img { width:100%; height:100%; object-fit:cover; display:block; }
+
+/* UPSELL */
+.upsell-card { background:linear-gradient(135deg,rgba(59,130,246,0.06),rgba(37,99,235,0.04)); border:1px solid rgba(59,130,246,0.2); border-radius:14px; padding:32px 30px; display:flex; gap:24px; align-items:flex-start; }
+.upsell-icon { width:48px; height:48px; border-radius:12px; background:linear-gradient(135deg,var(--accent),#2563eb); display:flex; align-items:center; justify-content:center; font-size:22px; flex-shrink:0; }
+.upsell-body { flex:1; }
+.upsell-title { font-size:17px; font-weight:800; color:var(--white); letter-spacing:-0.4px; margin-bottom:6px; }
+.upsell-text { font-size:13.5px; color:var(--muted); line-height:1.65; margin-bottom:18px; }
+.upsell-text strong { color:var(--text); font-weight:500; }
+.btn-outline { display:inline-flex; align-items:center; gap:8px; color:var(--accent); border:1px solid rgba(59,130,246,0.4); font-size:13px; font-weight:600; padding:10px 20px; border-radius:7px; text-decoration:none; transition:all 0.2s; }
+.btn-outline:hover { background:rgba(59,130,246,0.08); border-color:var(--accent); }
 
 /* CTA */
-.cta-wrap { text-align:center; }
-.discord-btn { display:inline-flex; align-items:center; justify-content:center; gap:10px; background:var(--discord); color:#fff; font-size:16px; font-weight:700; padding:18px 40px; border-radius:10px; text-decoration:none; letter-spacing:0.1px; transition:all 0.2s; width:100%; max-width:400px; }
-.discord-btn:hover { background:var(--discord-hover); transform:translateY(-2px); box-shadow:0 12px 32px rgba(88,101,242,0.35); }
-.discord-btn svg { width:22px; height:22px; flex-shrink:0; }
-.cta-note { font-size:12px; color:var(--muted); margin-top:14px; }
+.cta-section { background:linear-gradient(135deg,rgba(0,229,160,0.05),rgba(59,130,246,0.06)); border-top:1px solid rgba(59,130,246,0.15) !important; }
+.cta-inner { text-align:center; max-width:520px; margin:0 auto; }
+.cta-inner h2 { font-size:36px; margin-bottom:12px; }
+.cta-inner p { font-size:15px; color:var(--muted); margin-bottom:32px; }
+.cta-big { display:block; background:linear-gradient(135deg,var(--accent),#2563eb); color:#fff; font-weight:800; font-size:17px; padding:20px 42px; border-radius:10px; text-decoration:none; letter-spacing:-0.3px; transition:all 0.2s; margin-bottom:14px; }
+.cta-big:hover { transform:translateY(-2px); box-shadow:0 16px 40px rgba(59,130,246,0.3); }
+.cta-fine { font-size:12px; color:var(--muted); }
+.cta-fine strong { color:var(--accent); font-weight:600; }
 
-/* DIVIDER */
-.divider { border:none; border-top:1px solid var(--border); margin:56px 0; }
+/* DISCORD SVG INLINE */
+.discord-icon { display:inline-block; vertical-align:middle; }
 
 /* FOOTER */
-.footer { text-align:center; padding:32px 0 48px; }
-.footer-text { font-size:13px; color:var(--muted); margin-bottom:12px; }
-.footer-link { color:var(--accent); text-decoration:none; font-weight:500; }
-.footer-link:hover { color:var(--accent2); }
-.footer-logo { font-weight:800; font-size:15px; color:var(--muted); letter-spacing:-0.3px; margin-bottom:8px; }
+footer { border-top:1px solid var(--border); padding:28px; text-align:center; }
+.footer-inner { max-width:840px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; }
+.footer-logo { font-weight:800; font-size:16px; color:var(--white); letter-spacing:-0.5px; }
 .footer-logo span { color:var(--accent); }
+.footer-text { font-size:12px; color:var(--muted); }
+.footer-text a { color:var(--muted); text-decoration:none; }
+.footer-text a:hover { color:var(--text); }
 
-@media (max-width:600px) {
-  h1 { font-size:34px; letter-spacing:-1.5px; }
-  h2 { font-size:22px; }
-  .hero { padding:48px 0 36px; }
-  .discord-btn { font-size:15px; padding:16px 28px; }
+@media (max-width:640px) {
+  h1 { font-size:36px; letter-spacing:-1.5px; }
+  h2 { font-size:24px; }
+  .pillars { grid-template-columns:1fr; }
+  .for-grid { grid-template-columns:1fr; }
+  section { padding:52px 0; }
+  .about-card, .upsell-card { flex-direction:column; gap:18px; }
+  .about-stats { gap:16px; }
+  .footer-inner { flex-direction:column; text-align:center; }
 }
 </style>
 </head>
@@ -82,67 +140,220 @@ h2 { font-weight:800; font-size:28px; letter-spacing:-0.8px; color:var(--white);
 <!-- NAV -->
 <nav>
   <div class="nav-inner">
-    <div class="logo">Edge<span>Bots</span></div>
-    <div class="nav-tag">Free Community</div>
+    <a href="#" class="logo">Edge<span>Bots</span></a>
+    <a href="https://discord.gg/GZrmPedThx" target="_blank" rel="noopener" class="nav-cta">
+      <svg class="discord-icon" width="14" height="11" viewBox="0 0 20 15" fill="currentColor" aria-hidden="true"><path d="M16.93 1.33A16.47 16.47 0 0 0 12.86.02a.06.06 0 0 0-.06.03c-.18.32-.38.73-.52 1.06a15.22 15.22 0 0 0-4.56 0A10.7 10.7 0 0 0 7.2.05a.06.06 0 0 0-.06-.03 16.43 16.43 0 0 0-4.07 1.31.06.06 0 0 0-.03.02C.44 5.52-.27 9.58.08 13.6a.07.07 0 0 0 .03.04 16.57 16.57 0 0 0 4.99 2.52.06.06 0 0 0 .07-.02c.38-.53.73-1.08 1.02-1.67a.06.06 0 0 0-.03-.09 10.9 10.9 0 0 1-1.56-.74.06.06 0 0 1-.01-.1c.1-.08.21-.16.31-.24a.06.06 0 0 1 .06-.01c3.27 1.49 6.81 1.49 10.04 0a.06.06 0 0 1 .06.01c.1.08.2.16.31.24a.06.06 0 0 1-.01.1c-.5.29-1.02.54-1.56.74a.06.06 0 0 0-.03.09c.3.58.64 1.14 1.02 1.67a.06.06 0 0 0 .07.02 16.52 16.52 0 0 0 5-2.52.06.06 0 0 0 .03-.04c.42-4.3-.7-8.03-2.96-11.34a.05.05 0 0 0-.03-.02ZM6.68 11.18c-.98 0-1.79-.9-1.79-2.01s.79-2.01 1.79-2.01c1.01 0 1.81.91 1.79 2.01 0 1.11-.79 2.01-1.79 2.01Zm6.62 0c-.98 0-1.79-.9-1.79-2.01s.79-2.01 1.79-2.01c1.01 0 1.81.91 1.79 2.01 0 1.11-.78 2.01-1.79 2.01Z"/></svg>
+      Join Free
+    </a>
   </div>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
   <div class="container">
-    <div class="free-badge">100% Free</div>
-    <h1>Free bots.<br><em>Always growing.</em></h1>
-    <p class="hero-sub">Join the EdgeBots Discord and access a <strong>growing library of ready-to-run MT5 bots</strong> — download any of them today and run them on your own account.</p>
+    <div class="badge">Free Community · Free Bots · Free Education</div>
+    <h1>Trade smarter.<br><em>Start free.</em></h1>
+    <p class="hero-sub">The EdgeBots Discord is the free HQ for traders getting into automation. <strong>Download ready-made MT5 bots, learn algo trading from scratch,</strong> and connect with a community that actually talks shop.</p>
+    <div class="hero-actions">
+      <a href="https://discord.gg/GZrmPedThx" target="_blank" rel="noopener" class="btn-primary">
+        <svg width="18" height="14" viewBox="0 0 20 15" fill="currentColor" aria-hidden="true"><path d="M16.93 1.33A16.47 16.47 0 0 0 12.86.02a.06.06 0 0 0-.06.03c-.18.32-.38.73-.52 1.06a15.22 15.22 0 0 0-4.56 0A10.7 10.7 0 0 0 7.2.05a.06.06 0 0 0-.06-.03 16.43 16.43 0 0 0-4.07 1.31.06.06 0 0 0-.03.02C.44 5.52-.27 9.58.08 13.6a.07.07 0 0 0 .03.04 16.57 16.57 0 0 0 4.99 2.52.06.06 0 0 0 .07-.02c.38-.53.73-1.08 1.02-1.67a.06.06 0 0 0-.03-.09 10.9 10.9 0 0 1-1.56-.74.06.06 0 0 1-.01-.1c.1-.08.21-.16.31-.24a.06.06 0 0 1 .06-.01c3.27 1.49 6.81 1.49 10.04 0a.06.06 0 0 1 .06.01c.1.08.2.16.31.24a.06.06 0 0 1-.01.1c-.5.29-1.02.54-1.56.74a.06.06 0 0 0-.03.09c.3.58.64 1.14 1.02 1.67a.06.06 0 0 0 .07.02 16.52 16.52 0 0 0 5-2.52.06.06 0 0 0 .03-.04c.42-4.3-.7-8.03-2.96-11.34a.05.05 0 0 0-.03-.02ZM6.68 11.18c-.98 0-1.79-.9-1.79-2.01s.79-2.01 1.79-2.01c1.01 0 1.81.91 1.79 2.01 0 1.11-.79 2.01-1.79 2.01Zm6.62 0c-.98 0-1.79-.9-1.79-2.01s.79-2.01 1.79-2.01c1.01 0 1.81.91 1.79 2.01 0 1.11-.78 2.01-1.79 2.01Z"/></svg>
+        Join the Discord — It's Free
+      </a>
+      <span class="hero-free">No email. No credit card. <strong>Just show up.</strong></span>
+    </div>
 
     <div class="hero-img-wrap">
-      <img src="https://edgebots.com.au/hero-mt5.png" alt="EdgeBots MT5 bot running live">
-    </div>
-
-    <div class="section-label">What's Inside</div>
-    <h2>Everything in the<br>community is free.</h2>
-    <p class="section-intro">No upsell to get in. No paywall on the bots.</p>
-
-    <div class="perks-list">
-      <div class="perk">
-        <div class="perk-icon">🤖</div>
-        <div>
-          <div class="perk-title">Growing Bot Library</div>
-          <div class="perk-desc">A constantly expanding collection of ready-to-run MT5 bots covering different strategies and styles — trend following, breakout, mean reversion and more. Download any of them, attach to your chart, and go.</div>
-        </div>
-      </div>
-      <div class="perk">
-        <div class="perk-icon">🎓</div>
-        <div>
-          <div class="perk-title">Build-Your-Own Education Series</div>
-          <div class="perk-desc">Step-by-step tutorials on building your own MT5 bots in MQL5. From first script to fully automated strategy — no prior coding experience needed.</div>
-        </div>
-      </div>
-      <div class="perk">
-        <div class="perk-icon">💬</div>
-        <div>
-          <div class="perk-title">A Community of Traders Automating</div>
-          <div class="perk-desc">Connect with other traders going systematic. Share results, ask questions, and get feedback from people actually running bots live.</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="cta-wrap">
-      <a class="discord-btn" href="https://discord.gg/GZrmPedThx" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.030z"/></svg>
-        Join the Discord — it's free
-      </a>
-      <div class="cta-note">Free forever · No credit card · Just join</div>
+      <img src="hero-mt5.png" alt="EdgeBots — MT5 automated trading">
     </div>
   </div>
 </section>
 
-<div class="container"><hr class="divider"></div>
+<!-- THREE PILLARS -->
+<section>
+  <div class="container">
+    <div class="section-label">What's Inside</div>
+    <h2>One server. Three reasons<br>to join today.</h2>
+    <p class="section-intro">Not just a chat room. Actual resources you can use right now.</p>
+    <div class="pillars">
+      <div class="pillar">
+        <span class="pillar-icon">🤖</span>
+        <div class="pillar-title">Free Bot Library</div>
+        <div class="pillar-desc">Download ready-made MT5 expert advisors covering popular strategies — trend following, breakouts, mean reversion, and more. Yours to use and learn from.</div>
+      </div>
+      <div class="pillar">
+        <span class="pillar-icon">📈</span>
+        <div class="pillar-title">Trading Education</div>
+        <div class="pillar-desc">Build a systematic edge. Risk management, strategy development, backtesting, and how to think about trading as a repeatable process — not a guessing game.</div>
+      </div>
+      <div class="pillar">
+        <span class="pillar-icon">⚙️</span>
+        <div class="pillar-title">Algo &amp; Automation</div>
+        <div class="pillar-desc">How automated trading actually works. MT5 setup, MQL5 basics, how expert advisors run, and how to take your first steps into algo trading — with or without code.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES DETAIL -->
+<section>
+  <div class="container">
+    <div class="section-label">Inside the Server</div>
+    <h2>Everything in one place.</h2>
+    <p class="section-intro">Channels built to take you from curious to confident.</p>
+    <div class="features">
+      <div class="feature-row">
+        <div class="feature-icon">📦</div>
+        <div class="feature-body">
+          <div class="feature-title">Bot Downloads</div>
+          <div class="feature-desc">A growing library of plug-and-play MT5 bots. Download, install on MT5, and start seeing how automated execution behaves in the market. New bots added regularly.</div>
+          <span class="feature-tag">Free to keep</span>
+        </div>
+      </div>
+      <div class="feature-row">
+        <div class="feature-icon">🎓</div>
+        <div class="feature-body">
+          <div class="feature-title">Trading Education Resources</div>
+          <div class="feature-desc">Structured guides covering strategy fundamentals, risk management frameworks, and how to define an edge that can actually be automated. No fluff, no upsell attached.</div>
+        </div>
+      </div>
+      <div class="feature-row">
+        <div class="feature-icon">🔧</div>
+        <div class="feature-body">
+          <div class="feature-title">Algo &amp; Automation Guides</div>
+          <div class="feature-desc">Step-by-step content on how MT5 bots work under the hood — EA structure, parameters, backtesting, and how to go from a manual rule to an automated condition.</div>
+        </div>
+      </div>
+      <div class="feature-row">
+        <div class="feature-icon">💬</div>
+        <div class="feature-body">
+          <div class="feature-title">Community of Traders Automating</div>
+          <div class="feature-desc">Traders at every level — from first EA to full systematic portfolios. Ask questions, share what you're building, get feedback from people actually running bots live.</div>
+        </div>
+      </div>
+      <div class="feature-row">
+        <div class="feature-icon">🔔</div>
+        <div class="feature-body">
+          <div class="feature-title">New Releases &amp; Updates</div>
+          <div class="feature-desc">First to know when a new bot drops, a new guide goes up, or EdgeBots opens custom build slots. The Discord is the only place this gets announced.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHO IT'S FOR -->
+<section>
+  <div class="container">
+    <div class="section-label">Who It's For</div>
+    <h2>You don't need to know<br>how to code.</h2>
+    <p class="section-intro">For traders at every level who want to understand automation — not just pay for a black box.</p>
+    <div class="for-grid">
+      <div class="for-card">
+        <div class="for-icon">🔍</div>
+        <div>
+          <div class="for-title">Curious About Algo Trading</div>
+          <div class="for-desc">You've heard about automated strategies but don't know where to start. The free bots and education are literally built for this moment.</div>
+        </div>
+      </div>
+      <div class="for-card">
+        <div class="for-icon">📈</div>
+        <div>
+          <div class="for-title">Manual Trader Wanting to Systematise</div>
+          <div class="for-desc">You have an approach that works and you want to understand what running it automatically actually looks like in practice.</div>
+        </div>
+      </div>
+      <div class="for-card">
+        <div class="for-icon">💻</div>
+        <div>
+          <div class="for-title">Already Using MT5</div>
+          <div class="for-desc">You're on the platform but haven't touched expert advisors. Downloading and running one of the free bots is the fastest way to see what's possible.</div>
+        </div>
+      </div>
+      <div class="for-card">
+        <div class="for-icon">🛠️</div>
+        <div>
+          <div class="for-title">Learning to Build Your Own Bots</div>
+          <div class="for-desc">Picking up MQL5 or trying to understand EA structure. The community and guides are built for exactly that path.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section>
+  <div class="container">
+    <div class="section-label">About</div>
+    <h2>Who's behind EdgeBots.</h2>
+    <p class="section-intro">Not a faceless brand. One builder who runs his own automated trading setup and wants to share what he knows.</p>
+    <div class="about-card">
+      <div class="about-avatar">
+        <img src="profile.png" alt="Bailey Griffiths" onerror="this.style.display='none';this.parentElement.innerHTML='👤'">
+      </div>
+      <div class="about-body">
+        <div class="about-name">Bailey Griffiths</div>
+        <div class="about-role">Algorithmic Trader · Cloud Engineer</div>
+        <div class="about-text">
+          Based on the Gold Coast, Australia. I run my own automated trading environment and spend most of my off-hours tinkering with infrastructure on my homelab. <strong>Trading and technology have been intertwined for years</strong> — EdgeBots started because I kept getting asked the same questions by traders who wanted to automate but had no clear starting point.
+          <br><br>
+          The Discord is the free side of that. No gatekeeping, no paywall to access the good stuff — just resources and a community of traders genuinely interested in the same thing.
+        </div>
+
+        <div class="workspace-wrap">
+          <img src="workspace.png" alt="Bailey's trading desk">
+        </div>
+
+        <div class="about-stats">
+          <div><div class="about-stat-num">MT5</div><div class="about-stat-label">Platform of choice</div></div>
+          <div><div class="about-stat-num">24/7</div><div class="about-stat-label">Bots running live</div></div>
+          <div><div class="about-stat-num">GC</div><div class="about-stat-label">Gold Coast, Australia</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOFT UPSELL -->
+<section>
+  <div class="container">
+    <div class="section-label">Want More?</div>
+    <h2>When you're ready for<br>something custom.</h2>
+    <p class="section-intro">The Discord is free forever. If you ever want a bot built to your exact strategy, that's what EdgeBots Custom Builds is for.</p>
+    <div class="upsell-card">
+      <div class="upsell-icon">🤖</div>
+      <div class="upsell-body">
+        <div class="upsell-title">EdgeBots Custom Bot Builds</div>
+        <div class="upsell-text">
+          Once you know what you want automated, we build it for you. <strong>Your exact strategy, coded in MQL5, delivered in 7 days.</strong> Hosted on EdgeBots infrastructure. One flat fee. You own the source outright.
+          <br><br>
+          Most people spend time in the Discord first — downloading bots, learning how things work, defining their rules in systematic terms. When they're ready to go custom, the option is there.
+        </div>
+        <a href="https://edgebots.com.au" class="btn-outline">See the Custom Build Service →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="cta-section">
+  <div class="container">
+    <div class="cta-inner">
+      <div class="section-label" style="text-align:center">Ready?</div>
+      <h2>Join the community.<br>It's free.</h2>
+      <p>Free bots to download. Real trading and algo education. A community that actually trades.</p>
+      <a href="https://discord.gg/GZrmPedThx" target="_blank" rel="noopener" class="cta-big">
+        Join the EdgeBots Discord →
+      </a>
+      <div class="cta-fine">No email required. No credit card. <strong>Free forever.</strong></div>
+    </div>
+  </div>
+</section>
 
 <!-- FOOTER -->
-<footer class="footer">
-  <div class="container">
+<footer>
+  <div class="footer-inner">
     <div class="footer-logo">Edge<span>Bots</span></div>
-    <div class="footer-text">Want a bot built to your exact strategy? <a href="https://edgebots.com.au" class="footer-link">See the custom build service →</a></div>
+    <div class="footer-text">© 2026 EdgeBots &nbsp;·&nbsp; <a href="https://edgebots.com.au">edgebots.com.au</a> &nbsp;·&nbsp; Trading involves risk. Not financial advice.</div>
   </div>
 </footer>
 
